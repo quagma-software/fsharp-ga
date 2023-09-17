@@ -11,7 +11,7 @@
 
   <p align="center">
     Basic library to manipulate multivectors
-    in geometric algebra
+    of geometric algebra
   </p>
 </div>
 
@@ -143,7 +143,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Qᴜᴀԍᴍᴀ® Sᴏғᴛᴡᴀʀᴇ - [@twitter_handle](https://twitter.com/twitter_handle) - software@quagma.net
+Qᴜᴀԍᴍᴀ® Sᴏғᴛᴡᴀʀᴇ - software@quagma.net
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
