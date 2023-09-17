@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᏋꓹ3.fs" />
+    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ3ꓹ0.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ꗃⳆutils\" />
   </ItemGroup>
 
 </Project>
