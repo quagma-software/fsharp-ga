@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆtestꓽᏋꓹ3.fs" />
+    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆtestꓽᎶꓹ3ꓹ0.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

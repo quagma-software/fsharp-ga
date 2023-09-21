@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽᎡ.fs" />
+    <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽꕥ.fs" />
     <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᏋꓹ3.fs" />
     <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ3ꓹ0.fs" />
   </ItemGroup>
