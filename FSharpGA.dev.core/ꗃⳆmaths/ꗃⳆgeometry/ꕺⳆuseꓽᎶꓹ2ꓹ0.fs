@@ -1,7 +1,54 @@
 ﻿namespace tech.quagma.ꗃⳆmaths.ꗃⳆgeometry
 
+open tech.quagma.ꗃⳆutils.ꕺⳆuseFSharp
+
+open System
+open System.Collections.Concurrent
+open System.Threading.Tasks
+
 // complex algebra (p=2, q=0)
 module ꕺⳆuseꓽᎶꓹ2ꓹ0=
+
+    [<AutoOpen>]
+    module private ꕺⳆprivateꓽᎶꓹ2ꓹ0=
+        type ᐪᎶ=
+            float array
+
+        let Ꮚ= [|
+            [| +1; +2; +3; +4 |];
+            [| +2; +1; +4; +3 |];
+            [| +3; -4; +1; -2 |];
+            [| +4; -3; -2; -1 |];
+        |]
+
+        let Ꮚᵢⱼ=
+            Array2D.init 4 4
+                (fun i j -> Ꮚ[i][j])
+
+        let Ꮿᵩ=
+            fun (φ: int) ->
+                [|0..3|] |> Array.Parallel.map (fun i ->
+                    [|0..3|] |> Array.Parallel.map (fun j ->
+                        (i, j)
+                    )
+                )
+                |> Array.concat
+                |> Array.Parallel.filter
+                    (fun (i, j) -> Math.Abs(Ꮚᵢⱼ[i, j]) = φ)
+                |> Array.Parallel.map
+                    (fun (i, j) -> (i, j, Math.Sign(Ꮚᵢⱼ[i, j])))
+
+        let ``ꕕ``
+            (u: ᐪᎶ)
+            (v: ᐪᎶ)=
+                [|1..4|] |> Array.Parallel.map (fun φ ->
+                    (Ꮿᵩ φ) |> Array.Parallel.map (fun (i, j, σ) ->
+                        u[i] * v[j] * float σ
+                    ) |> Array.Parallel.sum
+                ): ᐪᎶ
+
+        let ꁘ=
+            new ConcurrentDictionary<string, ᐪᎶ>()
 
 // multi-vector in Ꮆ(2, 0)
     type ᑉᎶᐣ= {|
@@ -11,71 +58,32 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
             ``λ₁₂``: float; // ᑉe₁₂ᐣ
     |}
 
-    let ``ꖴꓸ`` // int. product on eꓸ
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            + ᑉuᐣ.``λꓸ`` * ᑉvᐣ.``λꓸ``
-            + ᑉuᐣ.``λ₁`` * ᑉvᐣ.``λ₁``
-            + ᑉuᐣ.``λ₂`` * ᑉvᐣ.``λ₂``
-            - ᑉuᐣ.``λ₁₂`` * ᑉvᐣ.``λ₁₂``
+    type ᐪⳆwithꓽᎶꓹ2ꓹ0()=
+            member _.Yield(())= async {
+                do! Task.CompletedTask
+                    |> Async.AwaitTask
+            }
 
-    let ``ꖴ₁`` // int. product on e₁
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            + ᑉuᐣ.``λꓸ`` * ᑉvᐣ.``λ₁``
-            + ᑉuᐣ.``λ₁`` * ᑉvᐣ.``λꓸ``
-            - ᑉuᐣ.``λ₂`` * ᑉvᐣ.``λ₁₂``
-            + ᑉuᐣ.``λ₁₂`` * ᑉvᐣ.``λ₂``
+            member _.Zero()= async {
+                do! Task.CompletedTask
+                    |> Async.AwaitTask
+            }
 
-    let ``ꖴ₂`` // int. product on e₂
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            + ᑉuᐣ.``λꓸ`` * ᑉvᐣ.``λ₂``
-            + ᑉuᐣ.``λ₁`` * ᑉvᐣ.``λ₁₂``
-            + ᑉuᐣ.``λ₂`` * ᑉvᐣ.``λꓸ``
-            - ᑉuᐣ.``λ₁₂`` * ᑉvᐣ.``λ₁``
+            [<ⵛ("ᐅ")>]
+            member _.ᐅ(_, ᐠ1, ᐠ2)= async {
+                let name: string= ᐠ1
+                let element: ᑉᎶᐣ= ᐠ2
 
-    let ``ꖴ₁₂`` // int. product on e₁₂
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            + ᑉuᐣ.``λꓸ`` * ᑉvᐣ.``λ₁₂``
-            + ᑉuᐣ.``λ₁₂`` * ᑉvᐣ.``λꓸ``
+                ꁘ[name] <- [|
+                    element.``λꓸ``;
+                    element.``λ₁``;
+                    element.``λ₂``;
+                    element.``λ₁₂``;
+                |]
 
-    let ``ꖴ`` // full interior product
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ): ᑉᎶᐣ= {|
-            ``λꓸ``= ``ꖴꓸ`` ᑉuᐣ ᑉvᐣ;
-            ``λ₁``= ``ꖴ₁`` ᑉuᐣ ᑉvᐣ;
-            ``λ₂``= ``ꖴ₂`` ᑉuᐣ ᑉvᐣ;
-            ``λ₁₂``= ``ꖴ₁₂`` ᑉuᐣ ᑉvᐣ;
-        |}
+                do! Task.CompletedTask
+                    |> Async.AwaitTask
+            }
 
-    let ``ꕕꓸ`` // ext. product on eꓸ
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            0
-
-    let ``ꕕ₁`` // ext. product on e₁
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            0
-
-    let ``ꕕ₂`` // ext. product on e₂
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            0
-
-    let ``ꕕ₁₂`` // ext. product on e₁₂
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ)=
-            + ᑉuᐣ.``λ₁`` * ᑉvᐣ.``λ₂``
-            - ᑉuᐣ.``λ₂`` * ᑉvᐣ.``λ₁``
-
-    let ``ꕕ`` // full exterior product
-        (ᑉuᐣ: ᑉᎶᐣ)
-        (ᑉvᐣ: ᑉᎶᐣ): ᑉᎶᐣ= {|
-            ``λꓸ``= ``ꕕꓸ`` ᑉuᐣ ᑉvᐣ;
-            ``λ₁``= ``ꕕ₁`` ᑉuᐣ ᑉvᐣ;
-            ``λ₂``= ``ꕕ₂`` ᑉuᐣ ᑉvᐣ;
-            ``λ₁₂``= ``ꕕ₁₂`` ᑉuᐣ ᑉvᐣ;
-        |}
+    let ᐞⳆwithꓽᎶꓹ2ꓹ0=
+        ᐪⳆwithꓽᎶꓹ2ꓹ0()

@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽᎡ.fs" />
-    <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽꕥ.fs" />
-    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᏋꓹ3.fs" />
-    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ2ꓹ0.fs" />
-    <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ3ꓹ0.fs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ꗃⳆutils\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Include="ꗃⳆutils\ꕺⳆuseFSharp.fs" />
+        <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽᎡ.fs" />
+        <Compile Include="ꗃⳆmaths\ꗃⳆnumeric\ꕺⳆuseꓽꕥ.fs" />
+        <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᏋꓹ3.fs" />
+        <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ2ꓹ0.fs" />
+        <Compile Include="ꗃⳆmaths\ꗃⳆgeometry\ꕺⳆuseꓽᎶꓹ3ꓹ0.fs" />
+    </ItemGroup>
 
 </Project>
