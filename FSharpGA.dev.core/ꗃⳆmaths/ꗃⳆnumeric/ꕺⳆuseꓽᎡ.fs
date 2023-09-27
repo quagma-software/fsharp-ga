@@ -21,3 +21,39 @@ module ꕺⳆuseꓽᎡ=
         let ⴻ (ϑ: float)= ϑ % τ
         let ⵇ (ϑ: float)= if π < ϑ then ϑ - τ elif ϑ <= -π then ϑ + τ else ϑ
         if (-π < θ) && (θ <= π) then θ else (ⴻ >> ⵇ) θ
+
+    type Ꭱᘁ=
+        float
+
+    type Ꭱᣔ<'t>=
+        't -> float
+
+    type ᐪᎡ<'t>=
+        | Ꭱᘁ of Ꭱᘁ
+        | Ꭱᣔ of Ꭱᣔ<'t>
+        static member (+) (a: ᐪᎡ<'t>, b: ᐪᎡ<'t>)=
+            match (a, b) with
+            | (Ꭱᘁ u, Ꭱᘁ v) -> Ꭱᘁ (u + v)
+            | (Ꭱᘁ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u + v(φ))
+            | (Ꭱᣔ u, Ꭱᘁ v) -> Ꭱᣔ (fun φ -> u(φ) + v)
+            | (Ꭱᣔ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u(φ) + v(φ))
+        static member (-) (a: ᐪᎡ<'t>, b: ᐪᎡ<'t>)=
+            match (a, b) with
+            | (Ꭱᘁ u, Ꭱᘁ v) -> Ꭱᘁ (u - v)
+            | (Ꭱᘁ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u - v(φ))
+            | (Ꭱᣔ u, Ꭱᘁ v) -> Ꭱᣔ (fun φ -> u(φ) - v)
+            | (Ꭱᣔ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u(φ) - v(φ))
+        static member (*) (a: ᐪᎡ<'t>, b: ᐪᎡ<'t>)=
+            match (a, b) with
+            | (Ꭱᘁ u, Ꭱᘁ v) -> Ꭱᘁ (u * v)
+            | (Ꭱᘁ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u * v(φ))
+            | (Ꭱᣔ u, Ꭱᘁ v) -> Ꭱᣔ (fun φ -> u(φ) * v)
+            | (Ꭱᣔ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u(φ) * v(φ))
+        static member (/) (a: ᐪᎡ<'t>, b: ᐪᎡ<'t>)=
+            match (a, b) with
+            | (Ꭱᘁ u, Ꭱᘁ v) -> Ꭱᘁ (u / v)
+            | (Ꭱᘁ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u / v(φ))
+            | (Ꭱᣔ u, Ꭱᘁ v) -> Ꭱᣔ (fun φ -> u(φ) / v)
+            | (Ꭱᣔ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u(φ) / v(φ))
+        static member get_Zero()=
+            Ꭱᘁ ᱳ
