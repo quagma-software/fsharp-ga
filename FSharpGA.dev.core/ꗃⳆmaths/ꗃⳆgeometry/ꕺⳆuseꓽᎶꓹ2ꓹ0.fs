@@ -49,38 +49,60 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
                     ) |> Array.Parallel.sum
                 ): ᐪᎶ<'t>
 
-    type ᑉᎶᐣ<'t>=
-        | ``ᑉᎶ₀ᐣ``
-                of {|
-                    ``λꓸ``: ᐪᎡ<'t>;
-                    // blade-0
-                |}
-        | ``ᑉᎶ₁ᐣ``
-                of {|
-                    ``λ₁``: ᐪᎡ<'t>;
-                    ``λ₂``: ᐪᎡ<'t>;
-                    // blade-1
-                |}
-        | ``ᑉᎶ₂ᐣ``
-                of {|
-                    ``λ₁₂``: ᐪᎡ<'t>;
-                    // blade-2
-                |}
-        | ``ᑉᎶ꘎ᐣ``
-                of {|
-                    ``λꓸ``: ᐪᎡ<'t>;
-                    ``λ₁``: ᐪᎡ<'t>;
-                    ``λ₂``: ᐪᎡ<'t>;
-                    ``λ₁₂``: ᐪᎡ<'t>;
-                    // multi-vector
-                |}
+    type ᑉᎶᐣ<'t>= {|
+        ``λꓸ``: ᐪᎡ<'t>;
+        ``λ₁``: ᐪᎡ<'t>;
+        ``λ₂``: ᐪᎡ<'t>;
+        ``λ₁₂``: ᐪᎡ<'t>;
+        // multi-vector
+    |}
+
+    type ``ᑉᎶ₀ᐣ``<'t>= {|
+        ``λꓸ``: ᐪᎡ<'t>;
+        // blade-0 scalar
+    |}
+
+    type ``ᑉᎶ₁ᐣ``<'t>= {|
+        ``λ₁``: ᐪᎡ<'t>;
+        ``λ₂``: ᐪᎡ<'t>;
+        // blade-1 vector
+    |}
+
+    type ``ᑉᎶ₂ᐣ``<'t>= {|
+        ``λ₁₂``: ᐪᎡ<'t>;
+        // blade-2 bi-vector
+    |}
+
+    type ``ᑉᎶ꘎ᐣ``<'t>=
+        | ``ᑉᎶ꘎ᐣꓹλꓸ`` of ᐪᎡ<'t>
+        | ``ᑉᎶ꘎ᐣꓹλ₁`` of ᐪᎡ<'t>
+        | ``ᑉᎶ꘎ᐣꓹλ₂`` of ᐪᎡ<'t>
+        | ``ᑉᎶ꘎ᐣꓹλ₁₂`` of ᐪᎡ<'t>
 
     type withꓽᎶꓹ2ꓹ0<'t>()=
-            let ꁘ=
-                new ConcurrentDictionary<string, ᐪᎶ<'t>>()
-
-            let ᖽᖼ=
+            let ``ꖹ⭎⭏``=
                 new ConcurrentStack<ᐪᎶ<'t>>()
+
+            let mutable ``ꘖ🢕``: ᐪᎶ<'t>=
+                [|Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ|]
+
+            let ``ꘖ꘎``=
+                [|Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ|]
+
+            let ``ꘖ₀``=
+                fun () ->
+                    do ``ꘖ꘎``[0] <- Ꭱᘁ ᱳ
+                    do ``ꘖ꘎``[1] <- Ꭱᘁ ᱳ
+                    do ``ꘖ꘎``[2] <- Ꭱᘁ ᱳ
+                    do ``ꘖ꘎``[3] <- Ꭱᘁ ᱳ
+
+            let ``ꘖ⮐``
+                (φ: ``ᑉᎶ꘎ᐣ``<'t>)=
+                        match φ with
+                        | ``ᑉᎶ꘎ᐣꓹλꓸ`` λ -> do ``ꘖ꘎``[0] <- λ
+                        | ``ᑉᎶ꘎ᐣꓹλ₁`` λ -> do ``ꘖ꘎``[1] <- λ
+                        | ``ᑉᎶ꘎ᐣꓹλ₂`` λ -> do ``ꘖ꘎``[2] <- λ
+                        | ``ᑉᎶ꘎ᐣꓹλ₁₂`` λ -> do ``ꘖ꘎``[3] <- λ
 
             member _.Yield(())= async {
                 do! Task.CompletedTask
@@ -93,17 +115,49 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
             }
 
             [<ⵛ("ᐅ")>]
-            member _.ᐅ(_, ᐠ1)= async {
+            member _.ᐅ(_, φ)= async {
                 let task=
                     fun () ->
-                        let item=
-                            match ᐠ1 with
-                            | ``ᑉᎶ₀ᐣ`` ᑉuᐣ -> [|ᑉuᐣ.``λꓸ``;       Ꭱᘁ ᱳ;      Ꭱᘁ ᱳ;       Ꭱᘁ ᱳ|]
-                            | ``ᑉᎶ₁ᐣ`` ᑉuᐣ -> [|     Ꭱᘁ ᱳ; ᑉuᐣ.``λ₁``; ᑉuᐣ.``λ₂``;       Ꭱᘁ ᱳ|]
-                            | ``ᑉᎶ₂ᐣ`` ᑉuᐣ -> [|     Ꭱᘁ ᱳ;       Ꭱᘁ ᱳ;      Ꭱᘁ ᱳ; ᑉuᐣ.``λ₁₂``|]
-                            | ``ᑉᎶ꘎ᐣ`` ᑉuᐣ -> [|ᑉuᐣ.``λꓸ``; ᑉuᐣ.``λ₁``; ᑉuᐣ.``λ₂``; ᑉuᐣ.``λ₁₂``|]
+                        do ``ꘖ⮐`` φ
 
-                        ᖽᖼ.Push(item)
+                let action=
+                    new Action(task)
+
+                do! Task.Run(action)
+                    |> Async.AwaitTask
+            }
+
+            [<ⵛ("ᐃ")>]
+            member _.ᐃ(_, φ)= async {
+                let task=
+                    fun () ->
+                        do ``ꘖ⮐`` φ
+                        ``ꖹ⭎⭏``.Push(``ꘖ꘎``)
+
+                        do ``ꘖ₀`` ()
+
+                let action=
+                    new Action(task)
+
+                do! Task.Run(action)
+                    |> Async.AwaitTask
+            }
+
+            [<ⵛ("ꕕ")>]
+            member _.ꕕ(_, φ)= async {
+                let task=
+                    fun () ->
+                        do ``ꘖ⮐`` φ
+
+                        do ``ꖹ⭎⭏``.TryPop(&``ꘖ🢕``)
+                        |> ignore
+
+                        let ψ=
+                            ``ꕕ`` ``ꘖ🢕`` ``ꘖ꘎``
+
+                        ``ꖹ⭎⭏``.Push(ψ)
+
+                        do ``ꘖ₀`` ()
 
                 let action=
                     new Action(task)

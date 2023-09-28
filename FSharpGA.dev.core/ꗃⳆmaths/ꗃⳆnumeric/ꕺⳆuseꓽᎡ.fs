@@ -57,3 +57,9 @@ module ꕺⳆuseꓽᎡ=
             | (Ꭱᣔ u, Ꭱᣔ v) -> Ꭱᣔ (fun φ -> u(φ) / v(φ))
         static member get_Zero()=
             Ꭱᘁ ᱳ
+
+    let (|ᙿⴰ|ᛃⴰ|)
+            (ψ: ᐪᎡ<'t>)=
+                match ψ with
+                | Ꭱᘁ ᱳ -> ᙿⴰ
+                | _ -> ᛃⴰ
