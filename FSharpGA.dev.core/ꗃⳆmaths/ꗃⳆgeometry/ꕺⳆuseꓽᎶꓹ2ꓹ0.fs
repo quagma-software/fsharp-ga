@@ -80,88 +80,220 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
         | ``ᑉᎶ꘎ᐣꓹλ₁₂`` of ᐪᎡ<'t>
 
     type withꓽᎶꓹ2ꓹ0<'t>()=
-            let ``ꖹ⭎⭏``=
-                new ConcurrentStack<ᐪᎶ<'t>>()
+            // takes a list of coeffs λ꘎
+            // and converts to array-vector Λ
+            let ``ꘖ⮐``=
+                fun ᐠ1 ->
+                    let ``λ꘎``=
+                        ᐠ1: ``ᑉᎶ꘎ᐣ``<'t> list
 
-            let mutable ``ꘖ🢕``: ᐪᎶ<'t>=
-                [|Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ|]
+                    let f
+                        (Λ: ᐪᎶ<'t>)
+                        (λᵢ: ``ᑉᎶ꘎ᐣ``<'t>)=
+                                match λᵢ with
+                                | ``ᑉᎶ꘎ᐣꓹλꓸ`` λᵢ -> Array.set Λ 0 λᵢ
+                                | ``ᑉᎶ꘎ᐣꓹλ₁`` λᵢ -> Array.set Λ 1 λᵢ
+                                | ``ᑉᎶ꘎ᐣꓹλ₂`` λᵢ -> Array.set Λ 2 λᵢ
+                                | ``ᑉᎶ꘎ᐣꓹλ₁₂`` λᵢ -> Array.set Λ 3 λᵢ
+                                Λ
 
-            let ``ꘖ꘎``=
-                [|Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ|]
+                    let z=
+                        [|Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ; Ꭱᘁ ᱳ|]
 
-            let ``ꘖ₀``=
-                fun () ->
-                    do ``ꘖ꘎``[0] <- Ꭱᘁ ᱳ
-                    do ``ꘖ꘎``[1] <- Ꭱᘁ ᱳ
-                    do ``ꘖ꘎``[2] <- Ꭱᘁ ᱳ
-                    do ``ꘖ꘎``[3] <- Ꭱᘁ ᱳ
+                    let Λ=
+                        List.fold f z ``λ꘎``
 
-            let ``ꘖ⮐``
-                (φ: ``ᑉᎶ꘎ᐣ``<'t>)=
-                        match φ with
-                        | ``ᑉᎶ꘎ᐣꓹλꓸ`` λ -> do ``ꘖ꘎``[0] <- λ
-                        | ``ᑉᎶ꘎ᐣꓹλ₁`` λ -> do ``ꘖ꘎``[1] <- λ
-                        | ``ᑉᎶ꘎ᐣꓹλ₂`` λ -> do ``ꘖ꘎``[2] <- λ
-                        | ``ᑉᎶ꘎ᐣꓹλ₁₂`` λ -> do ``ꘖ꘎``[3] <- λ
+                    Λ
 
             member _.Yield(())= async {
-                do! Task.CompletedTask
+                let ``Ξ꘎``=
+                    []: ᐪᎶ<'t> list
+
+                let ``λ꘎``=
+                    []: ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let task=
+                    fun () ->
+                        let ꕺ=
+                            ``Ξ꘎``, ``λ꘎``
+
+                        ꕺ
+
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
                     |> Async.AwaitTask
+
+                return
+                    ꕺ
             }
 
             member _.Zero()= async {
-                do! Task.CompletedTask
+                let ``Ξ꘎``=
+                    []: ᐪᎶ<'t> list
+
+                let ``λ꘎``=
+                    []: ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let task=
+                    fun () ->
+                        let ꕺ=
+                            ``Ξ꘎``, ``λ꘎``
+
+                        ꕺ
+
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
                     |> Async.AwaitTask
+
+                return
+                    ꕺ
             }
 
             [<ⵛ("ᐅ")>]
-            member _.ᐅ(_, φ)= async {
+            member _.ᐅ(ᐤ1, ᐠ2)= async {
+                let! ᐠ1= ᐤ1
+
+                let (α, β)=
+                    ᐠ1: ᐪᎶ<'t> list
+                        * ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let ``Ξ꘎``=
+                    α
+
+                let ``λ꘎``=
+                    β
+
+                let λᵢ=
+                    ᐠ2: ``ᑉᎶ꘎ᐣ``<'t>
+
                 let task=
                     fun () ->
-                        do ``ꘖ⮐`` φ
+                        let ꕺ=
+                            ``Ξ꘎``, ``λ꘎`` @ [λᵢ]
 
-                let action=
-                    new Action(task)
+                        ꕺ
 
-                do! Task.Run(action)
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
                     |> Async.AwaitTask
+
+                return
+                    ꕺ
             }
 
             [<ⵛ("ᐃ")>]
-            member _.ᐃ(_, φ)= async {
+            member _.ᐃ(ᐤ1, ᐠ2)= async {
+                let! ᐠ1= ᐤ1
+
+                let (α, β)=
+                    ᐠ1: ᐪᎶ<'t> list
+                        * ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let ``Ξ꘎``=
+                    α
+
+                let ``λ꘎``=
+                    β
+
+                let λᵢ=
+                    ᐠ2: ``ᑉᎶ꘎ᐣ``<'t>
+
                 let task=
                     fun () ->
-                        do ``ꘖ⮐`` φ
-                        ``ꖹ⭎⭏``.Push(``ꘖ꘎``)
+                        let Λ=
+                            ``ꘖ⮐`` (``λ꘎`` @ [λᵢ])
 
-                        do ``ꘖ₀`` ()
+                        let ``Ξᕁ``=
+                            ``Ξ꘎`` @ [Λ]
 
-                let action=
-                    new Action(task)
+                        let ``λᕁ``=
+                            []: ``ᑉᎶ꘎ᐣ``<'t> list
 
-                do! Task.Run(action)
+                        let ꕺ=
+                            ``Ξᕁ``, ``λᕁ``
+
+                        ꕺ
+
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
                     |> Async.AwaitTask
+
+                return
+                    ꕺ
             }
 
             [<ⵛ("ꕕ")>]
-            member _.ꕕ(_, φ)= async {
+            member _.ꕕ(ᐤ1, ᐠ2)= async {
+                let! ᐠ1= ᐤ1
+
+                let (α, β)=
+                    ᐠ1: ᐪᎶ<'t> list
+                        * ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let ``Ξ꘎``=
+                    α
+
+                let ``λ꘎``=
+                    β
+
+                let λᵢ=
+                    ᐠ2: ``ᑉᎶ꘎ᐣ``<'t>
+
                 let task=
                     fun () ->
-                        do ``ꘖ⮐`` φ
+                        let n=
+                            List.length ``Ξ꘎``
 
-                        do ``ꖹ⭎⭏``.TryPop(&``ꘖ🢕``)
-                        |> ignore
+                        let u=
+                            List.last ``Ξ꘎``
 
-                        let ψ=
-                            ``ꕕ`` ``ꘖ🢕`` ``ꘖ꘎``
+                        let v=
+                            ``ꘖ⮐`` (``λ꘎`` @ [λᵢ])
 
-                        ``ꖹ⭎⭏``.Push(ψ)
+                        let p=
+                            ``ꕕ`` u v
 
-                        do ``ꘖ₀`` ()
+                        let ``Ξᕁ``=
+                            ``Ξ꘎``[..n-2] @ [p]
 
-                let action=
-                    new Action(task)
+                        let ``λᕁ``=
+                            []: ``ᑉᎶ꘎ᐣ``<'t> list
 
-                do! Task.Run(action)
+                        let ꕺ=
+                            ``Ξᕁ``, ``λᕁ``
+
+                        ꕺ
+
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
                     |> Async.AwaitTask
+
+                return
+                    ꕺ
+            }
+
+            [<ⵛ("ᐁ")>]
+            member _.ᐁ(ᐤ1, _)= async {
+                let! ᐠ1= ᐤ1
+
+                let (α, _)=
+                    ᐠ1: ᐪᎶ<'t> list
+                        * ``ᑉᎶ꘎ᐣ``<'t> list
+
+                let ``Ξ꘎``=
+                    α
+
+                let task=
+                    fun () ->
+                        let ꕺ=
+                            List.last ``Ξ꘎``
+
+                        ꕺ
+
+                let! ꕺ=
+                    Task.Run(ꗓ(task))
+                    |> Async.AwaitTask
+
+                return
+                    ꕺ
             }

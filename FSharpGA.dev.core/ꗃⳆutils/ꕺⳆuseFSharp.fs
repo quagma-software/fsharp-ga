@@ -1,5 +1,6 @@
 ﻿namespace tech.quagma.ꗃⳆutils
 
+open System
 open System.Threading.Tasks
 
 module ꕺⳆuseFSharp=
@@ -12,3 +13,7 @@ module ꕺⳆuseFSharp=
             async
             |> Async.StartImmediateAsTask
             :> Task
+
+    let ꗓ<'t>
+        (f: unit -> 't)=
+            new Func<'t>(f)
