@@ -3,6 +3,7 @@
 open System
 open System.Threading.Tasks
 
+[<AutoOpen>]
 module ꕺⳆuseFSharp=
 
     type ⵛ=

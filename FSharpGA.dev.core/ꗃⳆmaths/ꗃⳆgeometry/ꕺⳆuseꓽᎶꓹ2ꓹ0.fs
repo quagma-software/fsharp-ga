@@ -4,7 +4,6 @@ open tech.quagma.ꗃⳆutils.ꕺⳆuseFSharp
 open tech.quagma.ꗃⳆmaths.ꗃⳆnumeric.ꕺⳆuseꓽᎡ
 
 open System
-open System.Collections.Concurrent
 open System.Threading.Tasks
 
 // complex algebra (p=2, q=0)

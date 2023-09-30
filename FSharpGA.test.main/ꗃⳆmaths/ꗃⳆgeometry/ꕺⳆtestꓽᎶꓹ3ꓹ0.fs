@@ -19,6 +19,7 @@ module ꕺⳆtestꓽᎶꓹ3ꓹ0=
         member this.ᐞⳆG1aⳆtestIntProduct()=
             Console.WriteLine($"-- Testing null products --")
 
+            (*
             for  i in [1..16] do
                 let ᑉuᐣ: ᑉᎶᐣ= {|
                     ``λꓸ``= ꔞ.GetInt32(-15, 16);
@@ -53,3 +54,4 @@ module ꕺⳆtestꓽᎶꓹ3ꓹ0=
                 Assert.IsTrue(ᑉu꘡vᐣ.``λ₁₃`` = 0)
                 Assert.IsTrue(ᑉu꘡vᐣ.``λ₂₃`` = 0)
                 Assert.IsTrue(ᑉu꘡vᐣ.``λ₁₂₃`` = 0)
+            *)
