@@ -63,3 +63,7 @@ module ꕺⳆuseꓽᎡ=
                 match ψ with
                 | Ꭱᘁ ᱳ -> ᙿⴰ
                 | _ -> ᛃⴰ
+
+    let Ꭱᔥ=
+        fun μ ->
+            Ꭱᘁ (float(ꔟ()) * ꔞ() * μ)
