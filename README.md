@@ -1,20 +1,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/quagma-software/fsharp-ga">
-    <!--
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-    -->
-  </a>
+    <a href="https://github.com/quagma-software/fsharp-ga">
+        <!--
+        <img src="images/logo.png" alt="Logo" width="80" height="80">
+        -->
+    </a>
 
-  <h3 align="center">Geometric Algebra for F♯</h3>
+    <h3 align="center">Geometric Algebra for F♯</h3>
 
-  <p align="center">
-    Basic library to manipulate multivectors
-    of geometric algebra
-  </p>
+    <p align="center">
+        Basic library to manipulate multivectors
+        of geometric algebra
+    </p>
+
+    <img src=".logo.svg" width="80" height="80" />
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
