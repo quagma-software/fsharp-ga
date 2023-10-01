@@ -66,9 +66,32 @@ No NPM available right now...
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Modules to be included:
 ```fsharp
-let x=
-    0
+open tech.quagma.ꗃⳆutils.ꕺⳆuseFSharp
+open tech.quagma.ꗃⳆmaths.ꗃⳆnumeric.ꕺⳆuseꓽᎡ
+open tech.quagma.ꗃⳆmaths.ꗃⳆgeometry.ꕺⳆuseꓽᎶꓹ2ꓹ0
+```
+
+Inside an async block:
+```fsharp
+async {
+    let! ᑉuᐣ= withꓽᎶꓹ2ꓹ0<unit> {
+        ᐅ (``ᑉᎶ꘎ᐣꓹλꓸ`` <| Ꭱᘁ 50.0)
+        ᐅ (``ᑉᎶ꘎ᐣꓹλ₁`` <| Ꭱᘁ 50.0)
+        ᐅ (``ᑉᎶ꘎ᐣꓹλ₂`` <| Ꭱᘁ 50.0)
+        ᐃ (``ᑉᎶ꘎ᐣꓹλ₁₂`` <| Ꭱᘁ 50.0)
+
+        ᐅ (``ᑉᎶ꘎ᐣꓹλꓸ`` <| Ꭱᔥ 100.0)
+        ᐅ (``ᑉᎶ꘎ᐣꓹλ₁`` <| Ꭱᔥ 100.0)
+        ᐅ (``ᑉᎶ꘎ᐣꓹλ₂`` <| Ꭱᔥ 100.0)
+        ꕕ (``ᑉᎶ꘎ᐣꓹλ₁₂`` <| Ꭱᔥ 100.0)
+
+        ᐁ ()
+    }
+
+    // do something with ᑉuᐣ
+}
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -2,13 +2,11 @@
 
 open tech.quagma.ꗃⳆutils.ꕺⳆuseFSharp
 open tech.quagma.ꗃⳆmaths.ꗃⳆnumeric.ꕺⳆuseꓽᎡ
-open tech.quagma.ꗃⳆmaths.ꗃⳆnumeric.ꕺⳆuseꓽꕥ
 open tech.quagma.ꗃⳆmaths.ꗃⳆgeometry.ꕺⳆuseꓽᎶꓹ2ꓹ0
 
 open Microsoft.VisualStudio.TestTools.UnitTesting
 
 open System
-open System.Security.Cryptography
 
 // complex algebra (p=2, q=0)
 module ꕺⳆtestꓽᎶꓹ2ꓹ0=
