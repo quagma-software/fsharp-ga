@@ -56,7 +56,9 @@ No NPM available right now...
    git clone https://github.com/quagma-software/fsharp-ga.git
    ```
 2. Open with Visual Studio 2022
-   `FSharpGA.sln`
+   ```text
+   FSharpGA.sln
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,7 +82,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Qᴜᴀԍᴍᴀ® Sᴏғᴛᴡᴀʀᴇ
+Qᴜᴀԍᴍᴀ® Sᴏғᴛᴡᴀʀᴇ<br/>
 software@quagma.net
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
