@@ -66,6 +66,8 @@ No NPM available right now...
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Let's start with $\mathcal{G}(2,0)$ [Ꮆꓹ2ꓹ0].
+
 Modules to be included:
 ```fsharp
 open tech.quagma.ꗃⳆutils.ꕺⳆuseFSharp
