@@ -66,7 +66,10 @@ No NPM available right now...
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Work in progress...
+```fsharp
+let x=
+    0
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
