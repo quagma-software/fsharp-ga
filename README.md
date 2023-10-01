@@ -9,7 +9,7 @@
     of geometric algebra
   </p>
 
-  <img src=".logo.svg" width="240" height="240" />
+  <img src=".logo.svg" width="360" height="360" />
 </div>
 
 
@@ -18,10 +18,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+      <a href="#the-project">The Project</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -40,48 +37,30 @@
 </details>
 
 
+<!-- THE PROJECT -->
+## The Project
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-This project...
+Work in progress...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+No NPM available right now...
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/quagma-software/fsharp-ga.git
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+2. Open with Visual Studio 2022
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
