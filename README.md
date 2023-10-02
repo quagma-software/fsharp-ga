@@ -5,7 +5,7 @@
   <h3 align="center">Geometric Algebra for F♯</h3>
 
   <p align="center">
-    Basic library to manipulate multivectors
+    Basic library to manipulate multi-vectors
     of geometric algebra
   </p>
 
@@ -66,7 +66,11 @@ No NPM available right now...
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Let's start with $\mathcal{G}(2,0)$ [Ꮆꓹ2ꓹ0].
+Let's start with:
+$$\mathcal{G}(2,0)$$
+
+A multi-vector $\vec{u}$ of $\mathcal{G}(2,0)$ can be decomposed as:
+$$\vec{u} = \lambda + \lambda_1\vec{e_1}$$
 
 Modules to be included:
 ```fsharp
