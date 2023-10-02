@@ -70,7 +70,7 @@ Let's start with:
 $$\mathcal{G}(2,0)$$
 
 A multi-vector $\vec{u}$ of $\mathcal{G}(2,0)$ can be decomposed as:
-$$\vec{u} = \lambda + \lambda_1\vec{e_1} + \lambda_2\vec{e_2} + \lambda_{12}\vec{e_1}\wedge\vec{e_2}$$
+$$\vec{u} = \lambda + \lambda_1\dot\vec{e_1} + \lambda_2\dot\vec{e_2} + \lambda_{12}\dot\vec{e_1}\wedge\vec{e_2}$$
 
 Modules to be included:
 ```fsharp
