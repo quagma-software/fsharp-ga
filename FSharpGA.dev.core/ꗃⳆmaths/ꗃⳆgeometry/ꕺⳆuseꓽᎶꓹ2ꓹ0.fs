@@ -104,6 +104,13 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
 
                     Λ
 
+            let getMultiVector (ᐠ1: ᐪᎶ<'t>): ᑉᎶᐣ<'t>= {|
+                ``λꓸ``= ᐠ1[0];
+                ``λ₁``= ᐠ1[1];
+                ``λ₂``= ᐠ1[2];
+                ``λ₁₂``= ᐠ1[3];
+            |}
+
             member _.Yield(())= async {
                 let ``Ξ꘎``=
                     []: ᐪᎶ<'t> list
@@ -294,5 +301,8 @@ module ꕺⳆuseꓽᎶꓹ2ꓹ0=
                     |> Async.AwaitTask
 
                 return
-                    ꕺ
+                    getMultiVector ꕺ
             }
+
+    type withꓽᎶꓹ2ꓹ0=
+            withꓽᎶꓹ2ꓹ0<unit>
