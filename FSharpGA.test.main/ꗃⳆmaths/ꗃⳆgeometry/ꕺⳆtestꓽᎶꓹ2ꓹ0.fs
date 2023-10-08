@@ -9,6 +9,8 @@ open Microsoft.VisualStudio.TestTools.UnitTesting
 
 open System
 
+open FSharp.Control
+
 // complex algebra (p=2, q=0)
 module ꕺⳆtestꓽᎶꓹ2ꓹ0=
 
@@ -19,8 +21,11 @@ module ꕺⳆtestꓽᎶꓹ2ꓹ0=
         member this.ᐞⳆG1aⳆtestNullProducts()= ⵑⵑ <| async {
             Console.WriteLine($"-- Testing null products --")
 
-            do! testParallel() {
-                for i in [1..16] do
+            let r= new Random()
+
+            do! ꘈ() {
+                ꘈᐊ [1..16]
+                ꘈᐅ (fun i -> async {
                     let! ᑉuᐣ= withꓽᎶꓹ2ꓹ0() {
                         ᐅ (``ᑉᎶ꘎ᐣꓹλꓸ`` <| Ꭱᘁ ᱳ)
                         ᐅ (``ᑉᎶ꘎ᐣꓹλ₁`` <| Ꭱᘁ ᱳ)
@@ -35,7 +40,16 @@ module ꕺⳆtestꓽᎶꓹ2ꓹ0=
                         ᐁ ()
                     }
 
+                    do! Async.Sleep (1000 * r.Next(1, 4))
+                    Console.WriteLine($"{DateTime.Now:HHmmss}")
                     Console.WriteLine(ᑉuᐣ)
-                    //ᘛⵑᘚ ""
+
+                    return
+                        ᑉuᐣ
+                })
+
+                ᐁ ()
             }
+
+            Console.WriteLine("--end--")
         }
